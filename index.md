@@ -22,4 +22,4 @@ We are focused on building clean, user-friendly tools that improve everyday life
 
 - [Privacy Policy](privacy-policy.md)
 
-*Last updated: [Today's date]*
+*Last updated: 16/08/25*
