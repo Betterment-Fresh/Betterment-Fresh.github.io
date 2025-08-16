@@ -27,7 +27,7 @@ Tickchick offers optional integrations that you can choose to enable:
 Tickchick requests the following permissions:
 - **Notifications:** To alert you when timers complete
 - **Vibration:** To provide haptic feedback for timer alerts  
-- **Internet:** Only for optional Todoist and LIFX integrations (when enabled by you)
+- **Internet:** Only for optional Todoist integration (when enabled by you)
 - **Foreground Service:** To continue running timers when the app is in background
 
 ## Data Security
