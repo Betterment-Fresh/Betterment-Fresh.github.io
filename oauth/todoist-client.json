@@ -1,0 +1,16 @@
+{
+  "client_id": "https://betterment-fresh.github.io/oauth/todoist-client.json",
+  "client_name": "TickChick",
+  "client_uri": "https://betterment-fresh.github.io",
+  "redirect_uris": [
+    "https://betterment-fresh.github.io/oauth/todoist/callback"
+  ],
+  "response_types": [
+    "code"
+  ],
+  "grant_types": [
+    "authorization_code",
+    "refresh_token"
+  ],
+  "token_endpoint_auth_method": "none"
+}

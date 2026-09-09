@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Returning to TickChick</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+    .card {
+      background: #ffffff;
+      padding: 32px 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    .spinner {
+      border: 4px solid #f1f5f9;
+      border-top: 4px solid #f59e0b;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    h1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+    p {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #f59e0b;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #d97706;
+    }
+    .error {
+      color: #ef4444;
+      font-size: 13px;
+      margin-top: 16px;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="spinner" id="spinner"></div>
+    <h1 id="title">Connecting to TickChick...</h1>
+    <p id="description">Authorization complete. Returning you to the TickChick app.</p>
+    <a href="#" class="btn" id="launch-btn" style="display: none;">Open TickChick</a>
+    <div id="error-msg" class="error" style="display: none;"></div>
+  </div>
+
+  <script>
+    (function() {
+      const searchParams = window.location.search;
+      const targetScheme = "tickchick://todoist/callback" + searchParams;
+      const launchBtn = document.getElementById("launch-btn");
+      const errorMsg = document.getElementById("error-msg");
+      const title = document.getElementById("title");
+      const spinner = document.getElementById("spinner");
+
+      launchBtn.href = targetScheme;
+
+      const urlParams = new URLSearchParams(searchParams);
+      if (urlParams.has("error")) {
+        spinner.style.display = "none";
+        title.innerText = "Authorization Error";
+        errorMsg.style.display = "block";
+        errorMsg.innerText = urlParams.get("error_description") || urlParams.get("error");
+      }
+
+      // Immediately attempt redirect to the app
+      window.location.href = targetScheme;
+
+      // Reveal button if user is not redirected after a short delay
+      setTimeout(function() {
+        launchBtn.style.display = "inline-block";
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
