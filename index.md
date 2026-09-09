@@ -5,7 +5,7 @@ Welcome to the official home of Betterment Fresh, a developer of innovative mobi
 ## Our Apps
 
 - **Tickchick:** An intuitive timer app with task list built for productivity, speed and focus
-  - Coming soon
+  - Coming very soon
 
 ## About Us
 
